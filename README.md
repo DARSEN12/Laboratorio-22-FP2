@@ -1,0 +1,1 @@
+Creando repositorio para el laboratorio 22 (Herencia, Polimorfismo e Interfaces)
