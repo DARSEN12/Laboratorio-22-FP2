@@ -51,5 +51,13 @@ public abstract class Soldado {
     public void aumentarVida(int cantidad) {
         this.nivelVida += cantidad;
     }
+
+    public int getAtaque() {
+        return ataque;
+    }
+
+    public int getDefensa() {
+        return defensa;
+    }
     
 }

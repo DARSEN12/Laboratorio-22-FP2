@@ -3,6 +3,7 @@ import java.util.*;
 public class Ejercito {
     private String nombreReino;
     private ArrayList<Soldado> soldados;
+    private boolean evolucionRealizada; 
 
     public Ejercito(String nombreReino) {
         this.nombreReino = nombreReino;
@@ -92,4 +93,151 @@ public class Ejercito {
             System.out.println(soldado.getClass().getSimpleName() + ": " + soldado);
         }
     }
+
+    public void generarUnidadesEspeciales() {
+        Random random = new Random();
+        int fila, columna;
+        boolean posicionValida;
+    
+        do {
+            fila = random.nextInt(10);  
+            columna = random.nextInt(10);  
+    
+            posicionValida = true;
+            for (Soldado s : soldados) {
+                if (s.getFila() == fila && s.getColumna() == columna) {
+                    posicionValida = false;
+                    break;
+                }
+            }
+        } while (!posicionValida);
+    
+        Soldado unidadEspecial;
+        switch (nombreReino) {
+            case "Inglaterra" -> unidadEspecial = new EspadachinReal(
+                "Espadachin Real (" + nombreReino + ")", 
+                10, 10, 8, fila, columna
+            );
+            case "Francia" -> unidadEspecial = new CaballeroFranco(
+                "Caballero Franco (" + nombreReino + ")", 
+                12, 13, 7, fila, columna
+            );
+            case "Castilla-Aragón" -> unidadEspecial = new EspadachinConquistador(
+                "Espadachin Conquistador (" + nombreReino + ")", 
+                11, 10, 9, fila, columna
+            );
+            case "Moros" -> unidadEspecial = new CaballeroMoro(
+                "Caballero Moro (" + nombreReino + ")", 
+                13, 14, 6, fila, columna
+            );
+            case "Sacro Imperio Romano-Germánico" -> unidadEspecial = new EspadachinTeutonico(
+                "Espadachin Teutónico (" + nombreReino + ")", 
+                12, 10, 10, fila, columna
+            );
+            default -> throw new IllegalArgumentException("Reino desconocido: " + nombreReino);
+        }
+    
+        soldados.add(unidadEspecial);
+    }
+    
+    public boolean isEvolucionRealizada() {
+        return evolucionRealizada;
+    }
+
+    public void setEvolucionRealizada(boolean evolucionRealizada) {
+        this.evolucionRealizada = evolucionRealizada;
+    }
+
+    public void intentarEvolucionar() {
+        if (evolucionRealizada) {
+            System.out.println("El ejército de " + nombreReino + " ya realizó su evolución.");
+            return;
+        }
+    
+        for (int i = 0; i < soldados.size(); i++) {
+            Soldado soldado = soldados.get(i);
+    
+            switch (nombreReino) {
+                case "Inglaterra" -> {
+                    if (soldado instanceof Espadachin) {
+                        soldados.set(i, new EspadachinReal(
+                            "Espadachin Real (" + nombreReino + ")", 
+                            soldado.getNivelVida(), 
+                            soldado.getAtaque(), 
+                            soldado.getDefensa(), 
+                            soldado.getFila(), 
+                            soldado.getColumna()
+                        ));
+                        evolucionRealizada = true;
+                        System.out.println("El ejército de Inglaterra ha evolucionado un Espadachin a Espadachin Real.");
+                        return;
+                    }
+                }
+                case "Francia" -> {
+                    if (soldado instanceof Caballero) {
+                        soldados.set(i, new CaballeroFranco(
+                            "Caballero Franco (" + nombreReino + ")", 
+                            soldado.getNivelVida(), 
+                            soldado.getAtaque(), 
+                            soldado.getDefensa(), 
+                            soldado.getFila(), 
+                            soldado.getColumna()
+                        ));
+                        evolucionRealizada = true;
+                        System.out.println("El ejército de Francia ha evolucionado un Caballero a Caballero Franco.");
+                        return;
+                    }
+                }
+                case "Castilla-Aragón" -> {
+                    if (soldado instanceof Espadachin) {
+                        soldados.set(i, new EspadachinConquistador(
+                            "Espadachin Conquistador (" + nombreReino + ")", 
+                            soldado.getNivelVida(), 
+                            soldado.getAtaque(), 
+                            soldado.getDefensa(), 
+                            soldado.getFila(), 
+                            soldado.getColumna()
+                        ));
+                        evolucionRealizada = true;
+                        System.out.println("El ejército de Castilla-Aragón ha evolucionado un Espadachin a Espadachin Conquistador.");
+                        return;
+                    }
+                }
+                case "Moros" -> {
+                    if (soldado instanceof Caballero) {
+                        soldados.set(i, new CaballeroMoro(
+                            "Caballero Moro (" + nombreReino + ")", 
+                            soldado.getNivelVida(), 
+                            soldado.getAtaque(), 
+                            soldado.getDefensa(), 
+                            soldado.getFila(), 
+                            soldado.getColumna()
+                        ));
+                        evolucionRealizada = true;
+                        System.out.println("El ejército de Moros ha evolucionado un Caballero a Caballero Moro.");
+                        return;
+                    }
+                }
+                case "Sacro Imperio Romano-Germánico" -> {
+                    if (soldado instanceof Espadachin) {
+                        soldados.set(i, new EspadachinTeutonico(
+                            "Espadachin Teutónico (" + nombreReino + ")", 
+                            soldado.getNivelVida(), 
+                            soldado.getAtaque(), 
+                            soldado.getDefensa(), 
+                            soldado.getFila(), 
+                            soldado.getColumna()
+                        ));
+                        evolucionRealizada = true;
+                        System.out.println("El ejército del Sacro Imperio ha evolucionado un Espadachin a Espadachin Teutónico.");
+                        return;
+                    }
+                }
+                default -> throw new IllegalArgumentException("Reino desconocido: " + nombreReino);
+            }
+        }
+    
+        System.out.println("No hay soldados elegibles para evolucionar en el ejército de " + nombreReino + ".");
+    }
+    
 }
