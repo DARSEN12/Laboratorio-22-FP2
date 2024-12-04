@@ -1,5 +1,4 @@
-import java.util.ArrayList;
-import java.util.Random;
+import java.util.*;
 
 public class Ejercito {
     private String nombreReino;
@@ -13,45 +12,45 @@ public class Ejercito {
     public void generarSoldados(int cantidad) {
         Random random = new Random();
         for (int i = 0; i < cantidad; i++) {
-            int tipo = random.nextInt(4); // 0: Espadachin, 1: Arquero, 2: Caballero, 3: Lancero
+            int tipo = random.nextInt(4); 
             Soldado soldado;
             String nombre = "Soldado " + i + " (" + nombreReino + ")";
     
             switch (tipo) {
                 case 0 -> soldado = new Espadachin(
                     nombre, 
-                    random.nextInt(3) + 8, // Vida [8..10]
-                    10, // Ataque
-                    8,  // Defensa
+                    random.nextInt(3) + 8, 
+                    10, 
+                    8,  
                     random.nextInt(10), 
                     random.nextInt(10)
                 );
                 case 1 -> soldado = new Arquero(
                     nombre, 
-                    random.nextInt(3) + 3, // Vida [3..5]
-                    7,  // Ataque
-                    3,  // Defensa
+                    random.nextInt(3) + 3, 
+                    7,  
+                    3,  
                     random.nextInt(10), 
                     random.nextInt(10), 
-                    random.nextInt(10) // Número de flechas
+                    random.nextInt(10) 
                 );
                 case 2 -> soldado = new Caballero(
                     nombre, 
-                    random.nextInt(3) + 10, // Vida [10..12]
-                    13, // Ataque
-                    7,  // Defensa
+                    random.nextInt(3) + 10, 
+                    13, 
+                    7,  
                     random.nextInt(10), 
                     random.nextInt(10), 
-                    random.nextBoolean() // Montado o no
+                    random.nextBoolean() 
                 );
                 case 3 -> soldado = new Lancero(
                     nombre, 
-                    random.nextInt(3) + 5, // Vida [5..8]
-                    5,  // Ataque
-                    10, // Defensa
+                    random.nextInt(3) + 5, 
+                    5,  
+                    10, 
                     random.nextInt(10), 
                     random.nextInt(10), 
-                    random.nextDouble() * 2 + 1 // Longitud de lanza
+                    random.nextDouble() * 2 + 1 
                 );
                 default -> throw new IllegalArgumentException("Tipo de soldado desconocido.");
             }
@@ -59,7 +58,7 @@ public class Ejercito {
             soldados.add(soldado);
         }
     }
-    
+
     public ArrayList<Soldado> getSoldados() {
         return soldados;
     }
@@ -87,4 +86,10 @@ public class Ejercito {
         }
     }
     
+    public void mostrarSoldados() {
+        System.out.println("Soldados del Ejército de " + nombreReino + ":");
+        for (Soldado soldado : soldados) {
+            System.out.println(soldado.getClass().getSimpleName() + ": " + soldado);
+        }
+    }
 }

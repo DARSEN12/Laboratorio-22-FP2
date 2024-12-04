@@ -22,7 +22,7 @@ public class JuegoDeBatalla {
     }
     
     public void iniciar() {
-        System.out.println("¡Bienvenidos al juego de batalla!");
+        System.out.println("¡Bienvenidos al campo de batalla!");
         boolean juegoActivo = true;
         boolean turnoJugador1 = true;
     

@@ -30,6 +30,7 @@ public class Reino {
                         reinosSeleccionados[i] = reinoSeleccionado;
                         seleccionValida = true;
                         System.out.println("Jugador " + (i + 1) + " ha elegido: " + reinoSeleccionado);
+                        System.out.println("------------------------------------------");
                     } else {
                         System.out.println("Ese reino ya ha sido elegido. Elige otro.");
                     }
