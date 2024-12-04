@@ -31,4 +31,22 @@ public abstract class Soldado {
         return String.format("%s [Vida: %d, Ataque: %d, Defensa: %d, Pos: (%d,%d)]", 
                               nombre, nivelVida, ataque, defensa, fila, columna);
     }
+
+    public String getNombre() {
+        return nombre;
+    }
+
+    public int getNivelVida() {
+        return nivelVida;
+    }
+
+    public int getFila() {
+        return fila;
+    }
+
+    public int getColumna() {
+        return columna;
+    }
+
+    
 }
