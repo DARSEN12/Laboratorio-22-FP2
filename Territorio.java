@@ -1,5 +1,4 @@
-import java.util.Random;
-
+import java.util.*;
 public class Territorio {
     private static final String[] TERRITORIOS = {
         "Bosque", "Campo Abierto", "Montaña", "Desierto", "Playa"

@@ -4,7 +4,6 @@ public class Batalla {
     public static Soldado enfrentar(Soldado soldado1, Soldado soldado2) {
         int sumaVida = soldado1.getNivelVida() + soldado2.getNivelVida();
         double probabilidadS1 = (double) soldado1.getNivelVida() / sumaVida;
-        double probabilidadS2 = (double) soldado2.getNivelVida() / sumaVida;
 
         Random random = new Random();
         double resultado = random.nextDouble();

@@ -1,5 +1,4 @@
-import java.util.Scanner;
-
+import java.util.*;
 public class JuegoDeBatalla {
     private final Ejercito ejercito1;
     private final Ejercito ejercito2;
@@ -94,7 +93,6 @@ public class JuegoDeBatalla {
             }
         }
         System.out.println("Juego terminado.");
-    }
-    
+    }  
 }
 

@@ -1,5 +1,4 @@
-import java.util.Scanner;
-
+import java.util.*;
 public class Reino {
     private static final String[] REINOS_VALIDOS = {
         "Inglaterra", 

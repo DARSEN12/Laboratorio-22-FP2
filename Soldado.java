@@ -58,6 +58,5 @@ public abstract class Soldado {
 
     public int getDefensa() {
         return defensa;
-    }
-    
+    }   
 }

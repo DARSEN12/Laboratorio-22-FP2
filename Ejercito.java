@@ -239,5 +239,4 @@ public class Ejercito {
     
         System.out.println("No hay soldados elegibles para evolucionar en el ejército de " + nombreReino + ".");
     }
-    
 }
