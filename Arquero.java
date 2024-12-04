@@ -1,18 +1,19 @@
-class Arquero extends Soldado {
-    private int numeroFlechas;
+public class Arquero extends Soldado {
+    private int flechasDisponibles;
 
-    public Arquero(String nombre, int nivelVida, int ataque, int defensa, int fila, int columna, int numeroFlechas) {
+    public Arquero(String nombre, int nivelVida, int ataque, int defensa, int fila, int columna, int flechasDisponibles) {
         super(nombre, nivelVida, ataque, defensa, fila, columna);
-        this.numeroFlechas = numeroFlechas;
+        this.flechasDisponibles = flechasDisponibles;
     }
 
     @Override
     public void accionEspecial() {
-        if (numeroFlechas > 0) {
-            System.out.println(this.nombre + " dispara una flecha!");
-            numeroFlechas--;
+        if (flechasDisponibles > 0) {
+            System.out.println(nombre + " dispara una flecha, aumentando su ataque temporalmente.");
+            this.ataque += 5;
+            flechasDisponibles--;
         } else {
-            System.out.println(this.nombre + " no tiene flechas para disparar!");
+            System.out.println(nombre + " no tiene flechas disponibles.");
         }
     }
 }

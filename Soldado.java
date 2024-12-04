@@ -1,4 +1,4 @@
-abstract class Soldado {
+public abstract class Soldado {
     protected String nombre;
     protected int nivelVida;
     protected int ataque;
@@ -15,22 +15,20 @@ abstract class Soldado {
         this.columna = columna;
     }
 
-    public abstract void accionEspecial();
+    public abstract void accionEspecial(); 
 
     public void mover(int nuevaFila, int nuevaColumna) {
         this.fila = nuevaFila;
         this.columna = nuevaColumna;
     }
 
-    public int atacar(Soldado enemigo) {
-        return this.ataque - enemigo.defensa;
+    public void recibirAtaque(int dano) {
+        this.nivelVida -= Math.max(0, dano - defensa);
     }
 
-    public void recibirDaño(int daño) {
-        this.nivelVida -= daño;
-    }
-
-    public boolean estaVivo() {
-        return this.nivelVida > 0;
+    @Override
+    public String toString() {
+        return String.format("%s [Vida: %d, Ataque: %d, Defensa: %d, Pos: (%d,%d)]", 
+                              nombre, nivelVida, ataque, defensa, fila, columna);
     }
 }
