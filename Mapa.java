@@ -45,13 +45,17 @@ public class Mapa {
         return fila >= 0 && fila < filas && columna >= 0 && columna < columnas;
     }
 
-    public void mostrarMapa() {
+    public void mostrarMapa(Ejercito ejercito1, Ejercito ejercito2) {
+        System.out.println("Estado actual del mapa:");
         for (int i = 0; i < filas; i++) {
             for (int j = 0; j < columnas; j++) {
-                if (mapa[i][j] == null) {
+                Soldado soldado = mapa[i][j];
+                if (soldado == null) {
                     System.out.print("[   ] ");
                 } else {
-                    System.out.print("[" + mapa[i][j].getNombre().charAt(0) + " ] ");
+                    String inicialEjercito = ejercito1.getSoldados().contains(soldado) ? "1" : "2";
+                    String tipoSoldado = soldado.getClass().getSimpleName().substring(0, 1); // Primera letra del tipo
+                    System.out.print("[" + tipoSoldado + inicialEjercito + "] ");
                 }
             }
             System.out.println();

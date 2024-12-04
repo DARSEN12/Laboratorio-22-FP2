@@ -27,7 +27,7 @@ public class JuegoDeBatalla {
         boolean turnoJugador1 = true;
     
         while (juegoActivo) {
-            mapa.mostrarMapa();
+            mapa.mostrarMapa(ejercito1, ejercito2);
             System.out.println("\nTurno del jugador " + (turnoJugador1 ? "1" : "2"));
     
             Ejercito ejercitoActual = turnoJugador1 ? ejercito1 : ejercito2;
