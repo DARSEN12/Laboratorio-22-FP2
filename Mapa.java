@@ -49,18 +49,22 @@ public class Mapa {
         System.out.println("Estado actual del mapa:");
         for (int i = 0; i < filas; i++) {
             for (int j = 0; j < columnas; j++) {
-                Soldado soldado = mapa[i][j];
-                if (soldado == null) {
+                if (mapa[i][j] == null) {
                     System.out.print("[   ] ");
                 } else {
-                    String inicialEjercito = ejercito1.getSoldados().contains(soldado) ? "1" : "2";
-                    String tipoSoldado = soldado.getClass().getSimpleName().substring(0, 1); // Primera letra del tipo
-                    System.out.print("[" + tipoSoldado + inicialEjercito + "] ");
+                    String inicial = obtenerInicialReino(mapa[i][j], ejercito1, ejercito2);
+                    System.out.print("[ " + inicial + " ] ");
                 }
             }
             System.out.println();
         }
     }
+    
+    private String obtenerInicialReino(Soldado soldado, Ejercito ejercito1, Ejercito ejercito2) {
+        String inicialEjercito = ejercito1.getSoldados().contains(soldado) 
+            ? ejercito1.getNombreReino().substring(0, 1)
+            : ejercito2.getNombreReino().substring(0, 1);
+        String tipoSoldado = soldado.getClass().getSimpleName().substring(0, 1); 
+        return tipoSoldado + inicialEjercito; 
+    }
 }
-
-
