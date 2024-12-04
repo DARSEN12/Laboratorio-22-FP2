@@ -3,8 +3,8 @@ public class CaballeroMoro extends Caballero {
     private double tamanoFlecha;
     private int nivelEvolucion;
 
-    public CaballeroMoro(String nombre, int nivelVida, int ataque, int defensa, int fila, int columna, int numEjercito) {
-        super(nombre, nivelVida, ataque, defensa, fila, columna, true, numEjercito);
+    public CaballeroMoro(String nombre, int nivelVida, int ataque, int defensa, int fila, int columna) {
+        super(nombre, nivelVida, ataque, defensa, fila, columna, true);
         this.numeroFlechas = 5; 
         this.tamanoFlecha = 1.5; 
         this.nivelEvolucion = 1;

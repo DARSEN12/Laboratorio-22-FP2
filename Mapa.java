@@ -10,17 +10,12 @@ public class Mapa {
     }
 
     public boolean colocarSoldado(Soldado soldado) {
-        int fila = soldado.getFila();
-        int columna = soldado.getColumna();
-    
-        if (esPosicionValida(fila, columna) && mapa[fila][columna] == null) {
-            mapa[fila][columna] = soldado;
+        if (esPosicionValida(soldado.getFila(), soldado.getColumna()) && mapa[soldado.getFila()][soldado.getColumna()] == null) {
+            mapa[soldado.getFila()][soldado.getColumna()] = soldado;
             return true;
         }
-        System.out.println("Posición no válida o ya ocupada: fila=" + fila + ", columna=" + columna);
         return false;
     }
-    
 
     public boolean moverSoldado(Soldado soldado, int nuevaFila, int nuevaColumna) {
         if (esMovimientoValido(soldado, nuevaFila, nuevaColumna)) {
@@ -72,14 +67,4 @@ public class Mapa {
         String tipoSoldado = soldado.getClass().getSimpleName().substring(0, 1); 
         return tipoSoldado + inicialEjercito; 
     }
-
-    public int getFilas() {
-        return filas;
-    }
-
-    public int getColumnas() {
-        return columnas;
-    }
-
-    
 }

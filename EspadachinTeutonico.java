@@ -4,8 +4,8 @@ public class EspadachinTeutonico extends Espadachin {
     private int nivelEvolucion;
     private boolean modoTortuga;
 
-    public EspadachinTeutonico(String nombre, int nivelVida, int ataque, int defensa, int fila, int columna, int numEjercito) {
-        super(nombre, nivelVida, ataque, defensa, fila, columna, numEjercito);
+    public EspadachinTeutonico(String nombre, int nivelVida, int ataque, int defensa, int fila, int columna) {
+        super(nombre, nivelVida, ataque, defensa, fila, columna);
         this.numeroJabalinas = 4; 
         this.tamanoJabalina = 1.5; 
         this.nivelEvolucion = 1;

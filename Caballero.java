@@ -1,8 +1,8 @@
 public class Caballero extends Soldado {
     private boolean montado;
 
-    public Caballero(String nombre, int nivelVida, int ataque, int defensa, int fila, int columna, boolean montado, int numEjercito) {
-        super(nombre, nivelVida, ataque, defensa, fila, columna, numEjercito);
+    public Caballero(String nombre, int nivelVida, int ataque, int defensa, int fila, int columna, boolean montado) {
+        super(nombre, nivelVida, ataque, defensa, fila, columna);
         this.montado = montado;
     }
 

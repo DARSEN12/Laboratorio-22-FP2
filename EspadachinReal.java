@@ -3,8 +3,8 @@ public class EspadachinReal extends Espadachin {
     private double tamanoCuchillos;
     private int nivelEvolucion;
 
-    public EspadachinReal(String nombre, int nivelVida, int ataque, int defensa, int fila, int columna, int numEjercito) {
-        super(nombre, nivelVida, ataque, defensa, fila, columna, numEjercito);
+    public EspadachinReal(String nombre, int nivelVida, int ataque, int defensa, int fila, int columna) {
+        super(nombre, nivelVida, ataque, defensa, fila, columna);
         this.numeroCuchillos = 5; 
         this.tamanoCuchillos = 1.0; 
         this.nivelEvolucion = 1;
