@@ -1,8 +1,8 @@
 public class Espadachin extends Soldado {
     private double longitudEspada;
 
-    public Espadachin(String nombre, int nivelVida, int ataque, int defensa, int fila, int columna) {
-        super(nombre, nivelVida, ataque, defensa, fila, columna);
+    public Espadachin(String nombre, int nivelVida, int ataque, int defensa, int fila, int columna, int numEjercito) {
+        super(nombre, nivelVida, ataque, defensa, fila, columna, numEjercito);
     }
 
     @Override

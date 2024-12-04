@@ -21,22 +21,30 @@ public class JuegoDeBatalla {
     }
     
     public void iniciar() {
-        System.out.println("¡Bienvenidos al campo de batalla!");
+        System.out.println("¡Bienvenidos al juego de batalla!");
+        System.out.println("Ejército 1:");
+        ejercito1.getSoldados().forEach(System.out::println);
+        System.out.println("\nEjército 2:");
+        ejercito2.getSoldados().forEach(System.out::println);
+    
         boolean juegoActivo = true;
         boolean turnoJugador1 = true;
     
         while (juegoActivo) {
             mapa.mostrarMapa(ejercito1, ejercito2);
-            System.out.println("\nTurno del jugador " + (turnoJugador1 ? "1" : "2"));
-    
+            System.out.println("\nEs el turno del jugador " + (turnoJugador1 ? "1" : "2"));
+            
             Ejercito ejercitoActual = turnoJugador1 ? ejercito1 : ejercito2;
             Ejercito ejercitoOponente = turnoJugador1 ? ejercito2 : ejercito1;
     
             if (!ejercitoActual.isEvolucionRealizada()) {
+                System.out.println("\nEl ejército de " + ejercitoActual.getNombreReino() + " puede evolucionar.");
                 ejercitoActual.intentarEvolucionar();
+    
                 if (ejercitoActual.isEvolucionRealizada()) {
+                    System.out.println("¡El ejército de " + ejercitoActual.getNombreReino() + " ha evolucionado!");
                     turnoJugador1 = !turnoJugador1; 
-                    continue;
+                    continue; 
                 }
             }
     
@@ -56,8 +64,6 @@ public class JuegoDeBatalla {
     
             Soldado soldadoSeleccionado = ejercitoActual.getSoldados().get(seleccion);
     
-            mostrarPosicionesSoldados(ejercitoOponente);
-    
             System.out.print("Ingresa la nueva fila: ");
             int nuevaFila = scanner.nextInt();
             System.out.print("Ingresa la nueva columna: ");
@@ -65,15 +71,21 @@ public class JuegoDeBatalla {
     
             if (mapa.esMovimientoValido(soldadoSeleccionado, nuevaFila, nuevaColumna)) {
                 Soldado oponente = mapa.obtenerSoldadoEnPosicion(nuevaFila, nuevaColumna);
+                
                 if (oponente != null) {
-                    System.out.println("¡Batalla entre " + soldadoSeleccionado.getNombre() + " y " + oponente.getNombre() + "!");
-                    Soldado ganador = Batalla.enfrentar(soldadoSeleccionado, oponente);
-                    if (ganador == soldadoSeleccionado) {
-                        mapa.limpiarPosicion(oponente.getFila(), oponente.getColumna());
-                        ejercitoOponente.getSoldados().remove(oponente);
+                    if (soldadoSeleccionado.getNumEjercito() != oponente.getNumEjercito()) {
+                        System.out.println("¡Batalla entre " + soldadoSeleccionado.getNombre() + " y " + oponente.getNombre() + "!");
+                        Soldado ganador = Batalla.enfrentar(soldadoSeleccionado, oponente);
+    
+                        if (ganador == soldadoSeleccionado) {
+                            mapa.limpiarPosicion(oponente.getFila(), oponente.getColumna());
+                            ejercitoOponente.getSoldados().remove(oponente);
+                        } else {
+                            mapa.limpiarPosicion(soldadoSeleccionado.getFila(), soldadoSeleccionado.getColumna());
+                            ejercitoActual.getSoldados().remove(soldadoSeleccionado);
+                        }
                     } else {
-                        mapa.limpiarPosicion(soldadoSeleccionado.getFila(), soldadoSeleccionado.getColumna());
-                        ejercitoActual.getSoldados().remove(soldadoSeleccionado);
+                        System.out.println("No se puede enfrentar a un soldado del mismo equipo.");
                     }
                 } else {
                     mapa.moverSoldado(soldadoSeleccionado, nuevaFila, nuevaColumna);
@@ -92,7 +104,9 @@ public class JuegoDeBatalla {
                 turnoJugador1 = !turnoJugador1;
             }
         }
+    
         System.out.println("Juego terminado.");
-    }  
+    }
+    
 }
 

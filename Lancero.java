@@ -1,8 +1,8 @@
 public class Lancero extends Soldado {
     private double longitudLanza;
 
-    public Lancero(String nombre, int nivelVida, int ataque, int defensa, int fila, int columna, double longitudLanza) {
-        super(nombre, nivelVida, ataque, defensa, fila, columna);
+    public Lancero(String nombre, int nivelVida, int ataque, int defensa, int fila, int columna, double longitudLanza, int numEjercito) {
+        super(nombre, nivelVida, ataque, defensa, fila, columna, numEjercito);
         this.longitudLanza = longitudLanza;
     }
 

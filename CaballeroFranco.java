@@ -3,8 +3,8 @@ public class CaballeroFranco extends Caballero {
     private double tamanoLanza;
     private int nivelEvolucion;
 
-    public CaballeroFranco(String nombre, int nivelVida, int ataque, int defensa, int fila, int columna) {
-        super(nombre, nivelVida, ataque, defensa, fila, columna, true);
+    public CaballeroFranco(String nombre, int nivelVida, int ataque, int defensa, int fila, int columna, int numEjercito) {
+        super(nombre, nivelVida, ataque, defensa, fila, columna, true, numEjercito);
         this.numeroLanzas = 3; 
         this.tamanoLanza = 2.0; 
         this.nivelEvolucion = 1;

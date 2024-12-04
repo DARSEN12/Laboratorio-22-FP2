@@ -3,8 +3,8 @@ public class EspadachinConquistador extends Espadachin {
     private double tamanoHacha;
     private int nivelEvolucion;
 
-    public EspadachinConquistador(String nombre, int nivelVida, int ataque, int defensa, int fila, int columna) {
-        super(nombre, nivelVida, ataque, defensa, fila, columna);
+    public EspadachinConquistador(String nombre, int nivelVida, int ataque, int defensa, int fila, int columna, int numEjercito) {
+        super(nombre, nivelVida, ataque, defensa, fila, columna, numEjercito);
         this.numeroHachas = 3; 
         this.tamanoHacha = 2.0; 
         this.nivelEvolucion = 1;
