@@ -6,10 +6,21 @@ public class Main {
 
         Mapa mapa = new Mapa(10, 10);
 
-        Ejercito ejercito1 = new Ejercito("Inglaterra");
-        Ejercito ejercito2 = new Ejercito("Francia");
-        ejercito1.generarSoldados(5);
-        ejercito2.generarSoldados(5);
+        String[] reinosSeleccionados = Reino.escogerReinos();
+        System.out.println("Jugador 1 ha elegido: " + reinosSeleccionados[0]);
+        System.out.println("Jugador 2 ha elegido: " + reinosSeleccionados[1]);
+
+        Ejercito ejercito1 = new Ejercito(reinosSeleccionados[0]);
+        Ejercito ejercito2 = new Ejercito(reinosSeleccionados[1]);
+
+        ejercito1.generarSoldados(3);
+        ejercito2.generarSoldados(3);
+
+        String territorio = Territorio.generarTerritorio();
+        System.out.println("El territorio actual es: " + territorio);
+
+        ejercito1.aplicarBeneficios(territorio);
+        ejercito2.aplicarBeneficios(territorio);
 
         for (Soldado soldado : ejercito1.getSoldados()) {
             mapa.colocarSoldado(soldado);
@@ -21,5 +32,7 @@ public class Main {
 
         JuegoDeBatalla juego = new JuegoDeBatalla(mapa, ejercito1, ejercito2);
         juego.iniciar();
+
+        scanner.close();
     }
 }

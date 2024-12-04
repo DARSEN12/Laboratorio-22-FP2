@@ -48,5 +48,8 @@ public abstract class Soldado {
         return columna;
     }
 
+    public void aumentarVida(int cantidad) {
+        this.nivelVida += cantidad;
+    }
     
 }
