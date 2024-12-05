@@ -11,4 +11,8 @@ public class Lancero extends Soldado {
         System.out.println(nombre + " forma un schiltrom, aumentando defensa en 5 puntos.");
         this.defensa += 5;
     }
+
+    public double getLongitudLanza() {
+        return longitudLanza;
+    }
 }

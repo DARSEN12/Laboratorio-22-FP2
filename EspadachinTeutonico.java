@@ -43,5 +43,9 @@ public class EspadachinTeutonico extends Espadachin {
             System.out.println(nombre + " ya ha alcanzado el nivel máximo de evolución.");
         }
     }
+
+    public boolean isModoTortuga() {
+        return modoTortuga;
+    }
 }
 
