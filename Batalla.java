@@ -3,12 +3,11 @@ public class Batalla {
 
     public static Soldado enfrentar(Soldado soldado1, Soldado soldado2) {
         int sumaVida = soldado1.getNivelVida() + soldado2.getNivelVida();
-        double probabilidadS1 = (double) soldado1.getNivelVida() / sumaVida;
 
         Random random = new Random();
-        double resultado = random.nextDouble();
+        double resultado = random.nextDouble(sumaVida)+1;
 
-        if (resultado < probabilidadS1) {
+        if (resultado < (double) soldado1.getNivelVida()) {
             soldado1.nivelVida += 1; 
             System.out.println(soldado1.getNombre() + " gana la batalla contra " + soldado2.getNombre());
             return soldado1;
