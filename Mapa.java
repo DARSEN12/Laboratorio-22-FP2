@@ -34,7 +34,7 @@ public class Mapa {
     }
 
     public boolean esMovimientoValido(Soldado soldado, int nuevaFila, int nuevaColumna) {
-        return esPosicionValida(nuevaFila, nuevaColumna) && mapa[nuevaFila][nuevaColumna] == null;
+        return esPosicionValida(nuevaFila, nuevaColumna) && (mapa[nuevaFila][nuevaColumna] == null || soldado.getNumEjercito() != mapa[nuevaFila][nuevaColumna].getNumEjercito());
     }
 
     public Soldado obtenerSoldadoEnPosicion(int fila, int columna) {

@@ -16,9 +16,9 @@ public class Main {
         System.out.println("------------------------------------------");
 
         Ejercito ejercito1 = new Ejercito(reinosSeleccionados[0]);
-        Ejercito ejercito2 = new Ejercito(reinosSeleccionados[1]);
-
         ejercito1.generarSoldados(3);
+
+        Ejercito ejercito2 = new Ejercito(reinosSeleccionados[1]);
         ejercito2.generarSoldados(3);
 
         ejercito1.mostrarSoldados();

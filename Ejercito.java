@@ -4,8 +4,10 @@ public class Ejercito {
     private String nombreReino;
     private ArrayList<Soldado> soldados;
     private boolean evolucionRealizada; 
+    private static int contEjercitos=0;
 
     public Ejercito(String nombreReino) {
+        contEjercitos++;
         this.nombreReino = nombreReino;
         this.soldados = new ArrayList<>();
     }
@@ -15,11 +17,10 @@ public class Ejercito {
         for (int i = 0; i < cantidad; i++) {
             int tipo = random.nextInt(4); 
             Soldado soldado;
-            String nombre = "Soldado " + i + " (" + nombreReino + ")";
     
             switch (tipo) {
                 case 0 -> soldado = new Espadachin(
-                    nombre, 
+                    "Espadachin " + i + " (" + nombreReino + ")", 
                     random.nextInt(3) + 8, 
                     10, 
                     8,  
@@ -27,7 +28,7 @@ public class Ejercito {
                     random.nextInt(10)
                 );
                 case 1 -> soldado = new Arquero(
-                    nombre, 
+                    "Arquero " + i + " (" + nombreReino + ")",
                     random.nextInt(3) + 3, 
                     7,  
                     3,  
@@ -36,7 +37,7 @@ public class Ejercito {
                     random.nextInt(10) 
                 );
                 case 2 -> soldado = new Caballero(
-                    nombre, 
+                    "Caballero " + i + " (" + nombreReino + ")",
                     random.nextInt(3) + 10, 
                     13, 
                     7,  
@@ -45,7 +46,7 @@ public class Ejercito {
                     random.nextBoolean() 
                 );
                 case 3 -> soldado = new Lancero(
-                    nombre, 
+                    "Lancero " + i + " (" + nombreReino + ")",
                     random.nextInt(3) + 5, 
                     5,  
                     10, 
@@ -68,6 +69,10 @@ public class Ejercito {
         return nombreReino;
     }
 
+    public static int getContEjercitos() {
+        return contEjercitos;
+    }
+    
     public void aplicarBeneficios(String territorio) {
         boolean tieneBeneficio = switch (this.nombreReino) {
             case "Inglaterra" -> territorio.equals("Bosque");
@@ -149,6 +154,7 @@ public class Ejercito {
     }
 
     public void intentarEvolucionar() {
+        int contEjercitos=2;
         if (evolucionRealizada) {
             System.out.println("El ejército de " + nombreReino + " ya realizó su evolución.");
             return;
@@ -156,7 +162,9 @@ public class Ejercito {
     
         for (int i = 0; i < soldados.size(); i++) {
             Soldado soldado = soldados.get(i);
-    
+            if (soldados.get(i).getNumEjercito() == 1)
+                contEjercitos=1;
+            
             switch (nombreReino) {
                 case "Inglaterra" -> {
                     if (soldado instanceof Espadachin) {
@@ -168,6 +176,7 @@ public class Ejercito {
                             soldado.getFila(), 
                             soldado.getColumna()
                         ));
+                        soldados.get(i).setNumEjercito(contEjercitos);
                         evolucionRealizada = true;
                         System.out.println("El ejército de Inglaterra ha evolucionado un Espadachin a Espadachin Real.");
                         return;
@@ -183,6 +192,7 @@ public class Ejercito {
                             soldado.getFila(), 
                             soldado.getColumna()
                         ));
+                        soldados.get(i).setNumEjercito(contEjercitos);
                         evolucionRealizada = true;
                         System.out.println("El ejército de Francia ha evolucionado un Caballero a Caballero Franco.");
                         return;
@@ -198,6 +208,7 @@ public class Ejercito {
                             soldado.getFila(), 
                             soldado.getColumna()
                         ));
+                        soldados.get(i).setNumEjercito(contEjercitos);
                         evolucionRealizada = true;
                         System.out.println("El ejército de Castilla-Aragón ha evolucionado un Espadachin a Espadachin Conquistador.");
                         return;
@@ -213,6 +224,7 @@ public class Ejercito {
                             soldado.getFila(), 
                             soldado.getColumna()
                         ));
+                        soldados.get(i).setNumEjercito(contEjercitos);
                         evolucionRealizada = true;
                         System.out.println("El ejército de Moros ha evolucionado un Caballero a Caballero Moro.");
                         return;
@@ -228,6 +240,7 @@ public class Ejercito {
                             soldado.getFila(), 
                             soldado.getColumna()
                         ));
+                        soldados.get(i).setNumEjercito(contEjercitos);
                         evolucionRealizada = true;
                         System.out.println("El ejército del Sacro Imperio ha evolucionado un Espadachin a Espadachin Teutónico.");
                         return;

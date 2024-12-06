@@ -34,10 +34,6 @@ public class JuegoDeBatalla {
     
             if (!ejercitoActual.isEvolucionRealizada()) {
                 ejercitoActual.intentarEvolucionar();
-                if (ejercitoActual.isEvolucionRealizada()) {
-                    turnoJugador1 = !turnoJugador1; 
-                    continue;
-                }
             }
     
             System.out.println("\nSoldados disponibles:");
@@ -95,4 +91,3 @@ public class JuegoDeBatalla {
         System.out.println("Juego terminado.");
     }  
 }
-
