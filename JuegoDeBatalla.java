@@ -1,4 +1,6 @@
 import java.util.*;
+import javax.swing.*;
+import java.awt.*;
 public class JuegoDeBatalla {
     private final Ejercito ejercito1;
     private final Ejercito ejercito2;
@@ -79,15 +81,48 @@ public class JuegoDeBatalla {
             }
     
             if (ejercito1.getSoldados().isEmpty()) {
-                System.out.println("\n¡El jugador 2 ha ganado la batalla!");
-                juegoActivo = false;
+                mostrarResultadoFinal("Jugador 2", ejercito1, ejercito2);
             } else if (ejercito2.getSoldados().isEmpty()) {
-                System.out.println("\n¡El jugador 1 ha ganado la batalla!");
-                juegoActivo = false;
-            } else {
-                turnoJugador1 = !turnoJugador1;
+                mostrarResultadoFinal("Jugador 1", ejercito1, ejercito2);
             }
         }
         System.out.println("Juego terminado.");
-    }  
+    } 
+    private void mostrarResultadoFinal(String ganador, Ejercito ejercito1, Ejercito ejercito2) {
+        JFrame frame = new JFrame("Resultado Final de la Batalla");
+        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        frame.setSize(600, 400);
+        frame.setLayout(new BorderLayout());
+    
+        JLabel labelGanador = new JLabel("¡El ganador es: " + ganador + "!", SwingConstants.CENTER);
+        labelGanador.setFont(new Font("Arial", Font.BOLD, 20));
+        frame.add(labelGanador, BorderLayout.NORTH);
+    
+        JPanel panelDetalles = new JPanel();
+        panelDetalles.setLayout(new GridLayout(1, 2));
+    
+        JTextArea detallesEjercito1 = new JTextArea();
+        detallesEjercito1.setText("Ejército de " + ejercito1.getNombreReino() + ":\n");
+        for (Soldado soldado : ejercito1.getSoldados()) {
+            detallesEjercito1.append(soldado.toString() + "\n");
+        }
+        detallesEjercito1.setEditable(false);
+        panelDetalles.add(new JScrollPane(detallesEjercito1));
+    
+        JTextArea detallesEjercito2 = new JTextArea();
+        detallesEjercito2.setText("Ejército de " + ejercito2.getNombreReino() + ":\n");
+        for (Soldado soldado : ejercito2.getSoldados()) {
+            detallesEjercito2.append(soldado.toString() + "\n");
+        }
+        detallesEjercito2.setEditable(false);
+        panelDetalles.add(new JScrollPane(detallesEjercito2));
+    
+        frame.add(panelDetalles, BorderLayout.CENTER);
+    
+        JButton botonCerrar = new JButton("Cerrar");
+        botonCerrar.addActionListener(e -> frame.dispose());
+        frame.add(botonCerrar, BorderLayout.SOUTH);
+    
+        frame.setVisible(true);
+    }
 }
