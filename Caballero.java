@@ -7,8 +7,9 @@ public class Caballero extends Soldado {
     }
 
     public void alternarMontura() {
-        this.montado = !montado;
-        System.out.println(nombre + (montado ? " monta su caballo." : " desmonta de su caballo."));
+        montado = !montado;
+        String estadoMontura = montado ? "monta" : "desmonta";
+        System.out.println(nombre + " " + estadoMontura + " su caballo.");
     }
 
     @Override

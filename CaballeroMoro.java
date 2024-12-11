@@ -27,9 +27,10 @@ public class CaballeroMoro extends Caballero {
     public void evolucionar() {
         if (nivelEvolucion < 4) {
             nivelEvolucion++;
-            numeroFlechas += 3; 
-            tamanoFlecha += 0.5; 
-            System.out.println(nombre + " ha evolucionado a nivel " + nivelEvolucion + "!");
+            numeroFlechas += 3;
+            tamanoFlecha += 0.5;
+            System.out.println(nombre + " ha evolucionado al nivel " + nivelEvolucion + " y ahora tiene " 
+                + numeroFlechas + " flechas de tamaño " + tamanoFlecha + "!");
         } else {
             System.out.println(nombre + " ya ha alcanzado el nivel máximo de evolución.");
         }

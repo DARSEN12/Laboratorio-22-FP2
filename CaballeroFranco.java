@@ -22,9 +22,9 @@ public class CaballeroFranco extends Caballero {
     public void evolucionar() {
         if (nivelEvolucion < 4) {
             nivelEvolucion++;
-            numeroLanzas += 1; 
-            tamanoLanza += 0.5; 
-            System.out.println(nombre + " ha evolucionado a nivel " + nivelEvolucion + "!");
+            numeroLanzas++;
+            tamanoLanza += 0.5;
+            System.out.println(nombre + " ha evolucionado al nivel " + nivelEvolucion + " y ahora tiene " + numeroLanzas + " lanzas de tamaño " + tamanoLanza + "!");
         } else {
             System.out.println(nombre + " ya ha alcanzado el nivel máximo de evolución.");
         }
